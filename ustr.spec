@@ -51,6 +51,7 @@ Statyczna biblioteka ustr.
 	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags}" \
 	LDFLAGS="%{rpmldflags}" \
+	libdir=%{_libdir} \
 	LIB_SHARED='$(OPT_LIB_SHARED)' \
 	LIB_STATIC='$(OPT_LIB_STATIC)' \
 	HIDE=
@@ -61,6 +62,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	mandir=%{_mandir} \
+	libdir=%{_libdir} \
 	LIB_SHARED='$(OPT_LIB_SHARED)' \
 	LIB_STATIC='$(OPT_LIB_STATIC)' \
 	LDCONFIG=true
