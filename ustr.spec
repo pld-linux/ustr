@@ -1,12 +1,12 @@
 Summary:	String library with very low memory overhead
 Summary(pl.UTF-8):	Biblioteka operacji na łańcuchach o małym narzucie pamięciowym
 Name:		ustr
-Version:	1.0.2
+Version:	1.0.4
 Release:	1
 License:	LGPL v2+ or BSD or MIT
 Group:		Libraries
 Source0:	http://www.and.org/ustr/%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	031846d6e6f86530752bcab9b2eed9e7
+# Source0-md5:	93147d9f0c9765d4cd0f04f7e44bdfce
 URL:		http://www.and.org/ustr/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
