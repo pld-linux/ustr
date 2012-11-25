@@ -2,7 +2,7 @@ Summary:	String library with very low memory overhead
 Summary(pl.UTF-8):	Biblioteka operacji na łańcuchach o małym narzucie pamięciowym
 Name:		ustr
 Version:	1.0.4
-Release:	1
+Release:	2
 License:	LGPL v2+ or BSD or MIT
 Group:		Libraries
 Source0:	http://www.and.org/ustr/%{version}/%{name}-%{version}.tar.bz2
@@ -58,6 +58,7 @@ Statyczna biblioteka ustr.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT/%{_lib}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
@@ -66,6 +67,10 @@ rm -rf $RPM_BUILD_ROOT
 	LIB_SHARED='$(OPT_LIB_SHARED)' \
 	LIB_STATIC='$(OPT_LIB_STATIC)' \
 	LDCONFIG=true
+
+libustr=$(cd $RPM_BUILD_ROOT%{_libdir}; echo libustr-1.0.so.*.*.*)
+mv $RPM_BUILD_ROOT%{_libdir}/libustr-1.0.so.* $RPM_BUILD_ROOT/%{_lib}
+ln -sf /%{_lib}/$libustr $RPM_BUILD_ROOT%{_libdir}/libustr.so
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -76,8 +81,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog LICENSE LICENSE_BSD LICENSE_MIT NEWS README THANKS TODO
-%attr(755,root,root) %{_libdir}/libustr-1.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libustr-1.0.so.1
+%attr(755,root,root) /%{_lib}/libustr-1.0.so.*.*.*
+%attr(755,root,root) %ghost /%{_lib}/libustr-1.0.so.1
 
 %files devel
 %defattr(644,root,root,755)
