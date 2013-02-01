@@ -72,6 +72,9 @@ libustr=$(cd $RPM_BUILD_ROOT%{_libdir}; echo libustr-1.0.so.*.*.*)
 mv $RPM_BUILD_ROOT%{_libdir}/libustr-1.0.so.* $RPM_BUILD_ROOT/%{_lib}
 ln -sf /%{_lib}/$libustr $RPM_BUILD_ROOT%{_libdir}/libustr.so
 
+# clean -devel docdir
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/doc/%{name}-devel-%{version}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
