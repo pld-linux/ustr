@@ -2,11 +2,17 @@ Summary:	String library with very low memory overhead
 Summary(pl.UTF-8):	Biblioteka operacji na łańcuchach o małym narzucie pamięciowym
 Name:		ustr
 Version:	1.0.4
-Release:	3
+Release:	4
 License:	LGPL v2+ or BSD or MIT
 Group:		Libraries
 Source0:	http://www.and.org/ustr/%{version}/%{name}-%{version}.tar.bz2
 # Source0-md5:	93147d9f0c9765d4cd0f04f7e44bdfce
+Patch0:		%{name}-doc-html-local-css.patch
+Patch1:		%{name}-gnu-inline.patch
+Patch2:		%{name}-man-cleanup.patch
+Patch3:		%{name}-man-spelling.patch
+Patch4:		%{name}-stdarg-va_copy.patch
+Patch5:		%{name}-unused-vars.patch
 URL:		http://www.and.org/ustr/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -45,6 +51,12 @@ Statyczna biblioteka ustr.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
 %{__make} all-shared \
